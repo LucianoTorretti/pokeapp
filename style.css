@@ -1,9 +1,16 @@
 /* ==================================== */
-/* 1. ESTILOS GLOBALES Y CONTENEDOR */
+/* 1. ESTILOS GLOBALES Y LAYOUT */
 /* ==================================== */
+:root {
+    --primary-color: #CC0000; /* Rojo Pokémon */
+    --secondary-color: #333;
+    --background-color: #f4f4f4;
+    --card-bg-color: #ffffff;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Fondo gris claro */
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
 }
@@ -14,27 +21,37 @@ body {
     padding: 20px;
 }
 
-h1 {
+/* --- LOGO Y ENCABEZADO --- */
+.pokedex-header {
     text-align: center;
-    color: #333;
     margin-bottom: 30px;
 }
 
-/* ==================================== */
-/* 2. ESTILOS DE LA BARRA DE NAVEGACIÓN (Filtros) */
-/* ==================================== */
+.logo-image {
+    max-width: 150px; /* Tamaño del logo */
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
 
+h1 {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* --- NAVEGACIÓN Y FILTROS (Mismo estilo que antes, pero mejorado) --- */
 .filters-nav {
     margin-bottom: 40px;
     padding: 20px;
     border-radius: 8px;
-    background-color: #ffffff; /* Fondo blanco para la barra de filtros */
+    background-color: var(--card-bg-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .type-buttons-grid {
     display: flex;
-    flex-wrap: wrap; /* Permite que los botones salten de línea */
+    flex-wrap: wrap;
     gap: 10px;
     margin-top: 15px;
 }
@@ -45,27 +62,138 @@ h1 {
     border-radius: 20px;
     cursor: pointer;
     font-weight: bold;
-    color: white; /* Texto blanco en los botones */
+    color: white;
     transition: opacity 0.2s;
     font-size: 12px;
+    text-transform: uppercase;
 }
 
 .filter-btn:hover {
     opacity: 0.8;
 }
 
-/* Botón VER TODOS */
 .all-btn {
-    background-color: #6c757d; 
+    background-color: var(--secondary-color); 
     margin-bottom: 10px;
+}
+
+/* --- GRID DE POKÉMON --- */
+.pokemon-todos {
+    display: grid;
+    /* Rejilla responsiva */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px;
+    padding: 20px 0;
 }
 
 
 /* ==================================== */
-/* 3. COLORES DE TIPOS DE POKÉMON (Clases para los botones y los badges) */
+/* 2. DISEÑO DE LA TARJETA DEL POKÉMON (.pokemon) */
 /* ==================================== */
 
-/* Los colores están basados en la convención de la PokeAPI y juegos */
+.pokemon {
+    background-color: var(--card-bg-color);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden; /* Oculta el número de fondo si se desborda */
+    transition: transform 0.3s ease-in-out;
+}
+
+.pokemon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Número de fondo grande --- */
+.pokemon-id-back {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 6em; /* Número grande */
+    color: rgba(0, 0, 0, 0.05); /* Muy transparente */
+    font-weight: 900;
+    line-height: 1;
+    z-index: 1; /* Detrás del contenido */
+}
+
+/* --- Imagen del Pokémon --- */
+.pokemon-imagen img {
+    width: 150px; /* Haz la imagen más grande */
+    height: 150px;
+    margin-bottom: 15px;
+    z-index: 2; /* Sobre el número de fondo */
+    position: relative; /* Para que z-index funcione */
+}
+
+/* --- Información General --- */
+.pokemon-info {
+    z-index: 3;
+    position: relative;
+}
+
+.nombre-contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.pokemon-id {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #888;
+}
+
+.pokemon-nombre {
+    font-size: 1.6em;
+    font-weight: 800;
+    color: var(--secondary-color);
+    text-transform: capitalize;
+    margin: 0;
+}
+
+/* --- Tipos (Badges) --- */
+.pokemon-tipos {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.pokemon-tipos .tipo { /* Usamos la clase 'tipo' para el badge */
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Stats (Altura y Peso) --- */
+.pokemon-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    font-size: 1em;
+}
+
+.stat-item { /* Usamos la clase 'stat-item' para el estilo */
+    color: #666;
+    font-weight: 600;
+    margin: 0;
+}
+
+
+/* ==================================== */
+/* 3. COLORES DE TIPOS (Igual que antes, crucial para los badges) */
+/* ==================================== */
 .type-normal { background-color: #A8A77A; }
 .type-fire { background-color: #EE8130; }
 .type-water { background-color: #6390F0; }
@@ -84,79 +212,3 @@ h1 {
 .type-dragon { background-color: #6F35FC; }
 .type-steel { background-color: #B7B7CE; }
 .type-fairy { background-color: #D685AD; }
-
-
-/* ==================================== */
-/* 4. ESTILOS DEL GRID Y TARJETAS */
-/* ==================================== */
-
-.pokemon-grid {
-    display: grid;
-    /* Diseño responsivo: mínimo 300px, máximo 1fr por columna */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 30px;
-    padding: 20px 0;
-}
-
-.pokemon-card {
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    position: relative;
-    /* Animación simple */
-    transition: transform 0.2s;
-}
-
-.pokemon-card:hover {
-    transform: translateY(-5px);
-}
-
-.pokemon-image {
-    width: 120px; 
-    height: auto;
-    margin-bottom: 10px;
-    z-index: 10;
-}
-
-.pokemon-info {
-    padding-top: 15px;
-    z-index: 5;
-}
-
-.pokemon-number {
-    font-size: 14px;
-    color: #999;
-    font-weight: bold;
-    margin: 0;
-}
-
-.pokemon-name {
-    font-size: 20px;
-    font-weight: 900;
-    color: #333;
-    margin: 5px 0 10px 0;
-}
-
-.type-badge {
-    color: white;
-    padding: 4px 10px;
-    border-radius: 15px;
-    font-size: 11px;
-    font-weight: bold;
-    display: inline-block;
-    margin: 2px;
-}
-
-.pokemon-details {
-    margin-top: 10px;
-    color: #777;
-    font-size: 14px;
-}
-
-.detail-item:not(:last-child)::after {
-    content: " | ";
-    margin: 0 5px;
-    color: #ccc;
-}

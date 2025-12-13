@@ -9,7 +9,15 @@
 <body>
 
     <div class="pokedex-container">
-        <h1>Pokédex</h1>
+        
+        <header class="pokedex-header">
+            <img 
+                src="https://e7.pngegg.com/pngimages/811/552/png-clipart-pokemon-logo-pokemon-logo-thumbnail.png" 
+                alt="Logo PokeAPI" 
+                class="logo-image"
+            >
+            <h1>Pokédex</h1>
+        </header>
 
         <nav class="filters-nav">
             <button class="filter-btn all-btn">VER TODOS</button>
@@ -35,37 +43,38 @@
                 <button class="filter-btn type-fairy">FAIRY</button>
             </div>
         </nav>
-    <main>
-
-        <div id="todos">
-            <div clas="pokemon-todos" id="listaPokemon">
-                <div class="pokemon">
-                    <p class="pokemon-id-back">#132</p>
-                    <div class="pokemon-imagen">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" alt="ditto">
-                    </div>
-                    <div class="pokemon-info">
-                        <div class="nombre-contenedor">
-                            <p class="pokemon-id">#132</p>
-                            <h2 class="pokemon-nombre">Ditto</h2>
+        
+        <main>
+            <div id="todos">
+                <div class="pokemon-todos" id="listaPokemon">
+                    
+                    <div class="pokemon">
+                        <p class="pokemon-id-back">#132</p>
+                        
+                        <div class="pokemon-imagen">
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" alt="ditto">
                         </div>
-                        <div class="pokemon-tipos">
-                            <p class="type-electric">ELECTRIC</p>
-                            <p class="type-fighting">FIGHTING</p>
-                        </div>
-                        <div class="pokemon-stats">
-                            p.altura
+                        
+                        <div class="pokemon-info">
+                            <div class="nombre-contenedor">
+                                <p class="pokemon-id">#132</p>
+                                <h2 class="pokemon-nombre">Ditto</h2>
+                            </div>
+                            
+                            <div class="pokemon-tipos">
+                                <p class="tipo type-electric">ELECTRIC</p>
+                                <p class="tipo type-fighting">FIGHTING</p>
+                            </div>
+                            
+                            <div class="pokemon-stats">
+                                <p class="stat-item">4m</p>
+                                <p class="stat-item">60kg</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-        </div>
-    </main>
-
-
-
-
+        </main>
+    </div>
 </body>
 </html>
