@@ -2,7 +2,7 @@
 /* 1. ESTILOS GLOBALES Y LAYOUT */
 /* ==================================== */
 :root {
-    --primary-color: #CC0000; /* Rojo Pokémon */
+    --primary-color: #CC0000; 
     --secondary-color: #333;
     --background-color: #f4f4f4;
     --card-bg-color: #ffffff;
@@ -28,7 +28,7 @@ body {
 }
 
 .logo-image {
-    max-width: 150px; /* Tamaño del logo */
+    max-width: 150px; 
     height: auto;
     display: block;
     margin: 0 auto 10px;
@@ -40,7 +40,7 @@ h1 {
     font-size: 2.5em;
 }
 
-/* --- NAVEGACIÓN Y FILTROS (Mismo estilo que antes, pero mejorado) --- */
+/* --- NAVEGACIÓN Y FILTROS (Con Sombra y Hover) --- */
 .filters-nav {
     margin-bottom: 40px;
     padding: 20px;
@@ -63,13 +63,20 @@ h1 {
     cursor: pointer;
     font-weight: bold;
     color: white;
-    transition: opacity 0.2s;
     font-size: 12px;
     text-transform: uppercase;
+    
+    /* Sombra de botón */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); 
+    
+    /* Transición para el hover */
+    transition: all 0.2s ease-in-out; 
 }
 
+/* EFECTO HOVER: Levantar y hacer la sombra más grande */
 .filter-btn:hover {
-    opacity: 0.8;
+    transform: translateY(-2px); /* Levanta el botón 2px */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Sombra más fuerte */
 }
 
 .all-btn {
@@ -80,7 +87,6 @@ h1 {
 /* --- GRID DE POKÉMON --- */
 .pokemon-todos {
     display: grid;
-    /* Rejilla responsiva */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 25px;
     padding: 20px 0;
@@ -98,7 +104,7 @@ h1 {
     text-align: center;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     position: relative;
-    overflow: hidden; /* Oculta el número de fondo si se desborda */
+    overflow: hidden; 
     transition: transform 0.3s ease-in-out;
 }
 
@@ -112,20 +118,28 @@ h1 {
     position: absolute;
     top: 5px;
     right: 15px;
-    font-size: 6em; /* Número grande */
-    color: rgba(0, 0, 0, 0.05); /* Muy transparente */
+    font-size: 6em; 
+    color: rgba(0, 0, 0, 0.05); 
     font-weight: 900;
     line-height: 1;
-    z-index: 1; /* Detrás del contenido */
+    z-index: 1; 
 }
 
-/* --- Imagen del Pokémon --- */
-.pokemon-imagen img {
-    width: 150px; /* Haz la imagen más grande */
-    height: 150px;
+/* --- Imagen del Pokémon (Más grande y centrada) --- */
+.pokemon-imagen {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 180px; /* Altura fija para el contenedor de la imagen */
     margin-bottom: 15px;
-    z-index: 2; /* Sobre el número de fondo */
-    position: relative; /* Para que z-index funcione */
+    z-index: 2; 
+    position: relative;
+}
+
+.pokemon-imagen img {
+    width: 150px; /* Tamaño grande de la imagen */
+    height: auto;
+    image-rendering: pixelated; 
 }
 
 /* --- Información General --- */
@@ -164,14 +178,14 @@ h1 {
     margin-bottom: 15px;
 }
 
-.pokemon-tipos .tipo { /* Usamos la clase 'tipo' para el badge */
+.pokemon-tipos .tipo { 
     color: white;
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.75em;
     font-weight: bold;
     text-transform: uppercase;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* --- Stats (Altura y Peso) --- */
@@ -184,7 +198,7 @@ h1 {
     font-size: 1em;
 }
 
-.stat-item { /* Usamos la clase 'stat-item' para el estilo */
+.stat-item {
     color: #666;
     font-weight: 600;
     margin: 0;
@@ -192,7 +206,7 @@ h1 {
 
 
 /* ==================================== */
-/* 3. COLORES DE TIPOS (Igual que antes, crucial para los badges) */
+/* 3. COLORES DE TIPOS */
 /* ==================================== */
 .type-normal { background-color: #A8A77A; }
 .type-fire { background-color: #EE8130; }

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex Mejorada</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="pokedex-container">
+        
+        <header class="pokedex-header">
+            <div class="logo-container">
+                <img 
+                    src="https://pokeapi.co/static/pokeapi_256.3fa72200.png" 
+                    alt="Logo PokeAPI" 
+                    class="logo-image"
+                >
+                <div class="header-text">
+                    <h1><i class="fas fa-dragon"></i> Pokédex Interactiva</h1>
+                    <p class="subtitle">Explora el mundo de los Pokémon</p>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-box">
+                    <i class="fas fa-paw"></i>
+                    <span>898 Pokémon</span>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-filter"></i>
+                    <span>18 tipos</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="filters-nav">
+            <div class="filters-header">
+                <h2><i class="fas fa-sliders-h"></i> Filtros por Tipo</h2>
+                <button class="filter-btn all-btn active">
+                    <i class="fas fa-eye"></i> VER TODOS
+                </button>
+            </div>
+            
+            <div class="type-buttons-grid">
+                <button class="filter-btn type-normal" data-type="normal">
+                    <i class="fas fa-circle"></i> NORMAL
+                </button>
+                <button class="filter-btn type-fire" data-type="fire">
+                    <i class="fas fa-fire"></i> FIRE
+                </button>
+                <button class="filter-btn type-water" data-type="water">
+                    <i class="fas fa-tint"></i> WATER
+                </button>
+                <button class="filter-btn type-grass" data-type="grass">
+                    <i class="fas fa-leaf"></i> GRASS
+                </button>
+                <button class="filter-btn type-electric" data-type="electric">
+                    <i class="fas fa-bolt"></i> ELECTRIC
+                </button>
+                <button class="filter-btn type-ice" data-type="ice">
+                    <i class="fas fa-snowflake"></i> ICE
+                </button>
+                <button class="filter-btn type-fighting" data-type="fighting">
+                    <i class="fas fa-fist-raised"></i> FIGHTING
+                </button>
+                <button class="filter-btn type-poison" data-type="poison">
+                    <i class="fas fa-skull-crossbones"></i> POISON
+                </button>
+                <button class="filter-btn type-ground" data-type="ground">
+                    <i class="fas fa-mountain"></i> GROUND
+                </button>
+                <button class="filter-btn type-flying" data-type="flying">
+                    <i class="fas fa-dove"></i> FLYING
+                </button>
+                <button class="filter-btn type-psychic" data-type="psychic">
+                    <i class="fas fa-eye"></i> PSYCHIC
+                </button>
+                <button class="filter-btn type-bug" data-type="bug">
+                    <i class="fas fa-bug"></i> BUG
+                </button>
+                <button class="filter-btn type-rock" data-type="rock">
+                    <i class="fas fa-gem"></i> ROCK
+                </button>
+                <button class="filter-btn type-ghost" data-type="ghost">
+                    <i class="fas fa-ghost"></i> GHOST
+                </button>
+                <button class="filter-btn type-dark" data-type="dark">
+                    <i class="fas fa-moon"></i> DARK
+                </button>
+                <button class="filter-btn type-dragon" data-type="dragon">
+                    <i class="fas fa-dragon"></i> DRAGON
+                </button>
+                <button class="filter-btn type-steel" data-type="steel">
+                    <i class="fas fa-cog"></i> STEEL
+                </button>
+                <button class="filter-btn type-fairy" data-type="fairy">
+                    <i class="fas fa-star"></i> FAIRY
+                </button>
+            </div>
+            
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-pokemon" placeholder="Buscar Pokémon por nombre...">
+            </div>
+        </nav>
+        
+        <main>
+            <div class="pokemon-count">
+                <span id="count">4</span> Pokémon encontrados
+            </div>
+            
+            <div id="todos">
+                <div class="pokemon-todos" id="listaPokemon">
+                    
+                    <!-- Tarjeta 1: Ditto -->
+                    <div class="pokemon" data-type="normal">
+                        <div class="pokemon-card-inner">
+                            <div class="pokemon-card-front">
+                                <p class="pokemon-id-back">#132</p>
+                                <div class="pokemon-imagen">
+                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png" alt="ditto">
+                                </div>
+                                <div class="pokemon-info">
+                                    <div class="nombre-contenedor">
+                                        <p class="pokemon-id">#132</p>
+                                        <h2 class="pokemon-nombre">Ditto</h2>
+                                        <i class="fas fa-heart favorite"></i>
+                                    </div>
+                                    <div class="pokemon-tipos">
+                                        <p class="tipo type-normal">NORMAL</p>
+                                    </div>
+                                    <div class="pokemon-stats">
+                                        <div class="stat-item">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                            <span>0.3m</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <i class="fas fa-weight-hanging"></i>
+                                            <span>4.0kg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pokemon-card-back">
+                                <h3>Habilidad Especial</h3>
+                                <p class="ability">Flexibilidad</p>
+                                <p class="description">Puede transformarse en cualquier Pokémon que vea.</p>
+                                <div class="stats-detailed">
+                                    <div class="stat-bar">
+                                        <span>HP</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 48%"></div>
+                                        </div>
+                                        <span>48</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Ataque</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 48%"></div>
+                                        </div>
+                                        <span>48</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Defensa</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 48%"></div>
+                                        </div>
+                                        <span>48</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Ditto Shiny -->
+                    <div class="pokemon" data-type="normal">
+                        <div class="pokemon-card-inner">
+                            <div class="pokemon-card-front">
+                                <p class="pokemon-id-back">#132</p>
+                                <div class="pokemon-imagen">
+                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/132.png" alt="ditto shiny">
+                                </div>
+                                <div class="pokemon-info">
+                                    <div class="nombre-contenedor">
+                                        <p class="pokemon-id">#132</p>
+                                        <h2 class="pokemon-nombre">Ditto <span class="shiny-badge">SHINY</span></h2>
+                                        <i class="far fa-heart favorite"></i>
+                                    </div>
+                                    <div class="pokemon-tipos">
+                                        <p class="tipo type-normal">NORMAL</p>
+                                    </div>
+                                    <div class="pokemon-stats">
+                                        <div class="stat-item">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                            <span>0.3m</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <i class="fas fa-weight-hanging"></i>
+                                            <span>4.0kg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pokemon-card-back">
+                                <h3>Habilidad Especial</h3>
+                                <p class="ability">Flexibilidad</p>
+                                <p class="description">Variante cromática rara de Ditto. ¡Muy buscado por coleccionistas!</p>
+                                <div class="stats-detailed">
+                                    <div class="stat-bar">
+                                        <span>HP</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 48%"></div>
+                                        </div>
+                                        <span>48</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Ataque</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 48%"></div>
+                                        </div>
+                                        <span>48</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Defensa</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 48%"></div>
+                                        </div>
+                                        <span>48</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3: Pikachu -->
+                    <div class="pokemon" data-type="electric">
+                        <div class="pokemon-card-inner">
+                            <div class="pokemon-card-front">
+                                <p class="pokemon-id-back">#025</p>
+                                <div class="pokemon-imagen">
+                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="pikachu">
+                                </div>
+                                <div class="pokemon-info">
+                                    <div class="nombre-contenedor">
+                                        <p class="pokemon-id">#025</p>
+                                        <h2 class="pokemon-nombre">Pikachu</h2>
+                                        <i class="far fa-heart favorite"></i>
+                                    </div>
+                                    <div class="pokemon-tipos">
+                                        <p class="tipo type-electric">ELECTRIC</p>
+                                    </div>
+                                    <div class="pokemon-stats">
+                                        <div class="stat-item">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                            <span>0.4m</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <i class="fas fa-weight-hanging"></i>
+                                            <span>6.0kg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pokemon-card-back">
+                                <h3>Habilidad Especial</h3>
+                                <p class="ability">Electricidad Estática</p>
+                                <p class="description">Pokémon ratón que almacena electricidad en sus mejillas.</p>
+                                <div class="stats-detailed">
+                                    <div class="stat-bar">
+                                        <span>HP</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 35%"></div>
+                                        </div>
+                                        <span>35</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Ataque</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 55%"></div>
+                                        </div>
+                                        <span>55</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Defensa</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 40%"></div>
+                                        </div>
+                                        <span>40</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4: Charizard -->
+                    <div class="pokemon" data-type="fire,flying">
+                        <div class="pokemon-card-inner">
+                            <div class="pokemon-card-front">
+                                <p class="pokemon-id-back">#006</p>
+                                <div class="pokemon-imagen">
+                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png" alt="charizard">
+                                </div>
+                                <div class="pokemon-info">
+                                    <div class="nombre-contenedor">
+                                        <p class="pokemon-id">#006</p>
+                                        <h2 class="pokemon-nombre">Charizard</h2>
+                                        <i class="far fa-heart favorite"></i>
+                                    </div>
+                                    <div class="pokemon-tipos">
+                                        <p class="tipo type-fire">FIRE</p>
+                                        <p class="tipo type-flying">FLYING</p>
+                                    </div>
+                                    <div class="pokemon-stats">
+                                        <div class="stat-item">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                            <span>1.7m</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <i class="fas fa-weight-hanging"></i>
+                                            <span>90.5kg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pokemon-card-back">
+                                <h3>Habilidad Especial</h3>
+                                <p class="ability">Mar Llamas</p>
+                                <p class="description">Pokémon dragón que escupe fuego capaz de derretir rocas.</p>
+                                <div class="stats-detailed">
+                                    <div class="stat-bar">
+                                        <span>HP</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 78%"></div>
+                                        </div>
+                                        <span>78</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Ataque</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 84%"></div>
+                                        </div>
+                                        <span>84</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Defensa</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 78%"></div>
+                                        </div>
+                                        <span>78</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 5: Bulbasaur -->
+                    <div class="pokemon" data-type="grass,poison">
+                        <div class="pokemon-card-inner">
+                            <div class="pokemon-card-front">
+                                <p class="pokemon-id-back">#001</p>
+                                <div class="pokemon-imagen">
+                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
+                                </div>
+                                <div class="pokemon-info">
+                                    <div class="nombre-contenedor">
+                                        <p class="pokemon-id">#001</p>
+                                        <h2 class="pokemon-nombre">Bulbasaur</h2>
+                                        <i class="far fa-heart favorite"></i>
+                                    </div>
+                                    <div class="pokemon-tipos">
+                                        <p class="tipo type-grass">GRASS</p>
+                                        <p class="tipo type-poison">POISON</p>
+                                    </div>
+                                    <div class="pokemon-stats">
+                                        <div class="stat-item">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                            <span>0.7m</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <i class="fas fa-weight-hanging"></i>
+                                            <span>6.9kg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pokemon-card-back">
+                                <h3>Habilidad Especial</h3>
+                                <p class="ability">Espesura</p>
+                                <p class="description">Pokémon semilla que lleva un bulbo en su espalda desde que nace.</p>
+                                <div class="stats-detailed">
+                                    <div class="stat-bar">
+                                        <span>HP</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 45%"></div>
+                                        </div>
+                                        <span>45</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Ataque</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 49%"></div>
+                                        </div>
+                                        <span>49</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Defensa</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 49%"></div>
+                                        </div>
+                                        <span>49</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 6: Squirtle -->
+                    <div class="pokemon" data-type="water">
+                        <div class="pokemon-card-inner">
+                            <div class="pokemon-card-front">
+                                <p class="pokemon-id-back">#007</p>
+                                <div class="pokemon-imagen">
+                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png" alt="squirtle">
+                                </div>
+                                <div class="pokemon-info">
+                                    <div class="nombre-contenedor">
+                                        <p class="pokemon-id">#007</p>
+                                        <h2 class="pokemon-nombre">Squirtle</h2>
+                                        <i class="far fa-heart favorite"></i>
+                                    </div>
+                                    <div class="pokemon-tipos">
+                                        <p class="tipo type-water">WATER</p>
+                                    </div>
+                                    <div class="pokemon-stats">
+                                        <div class="stat-item">
+                                            <i class="fas fa-ruler-vertical"></i>
+                                            <span>0.5m</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <i class="fas fa-weight-hanging"></i>
+                                            <span>9.0kg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pokemon-card-back">
+                                <h3>Habilidad Especial</h3>
+                                <p class="ability">Torrente</p>
+                                <p class="description">Pokémon tortuga que retrae su largo cuello dentro del caparazón para lanzar agua a presión.</p>
+                                <div class="stats-detailed">
+                                    <div class="stat-bar">
+                                        <span>HP</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 44%"></div>
+                                        </div>
+                                        <span>44</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Ataque</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 48%"></div>
+                                        </div>
+                                        <span>48</span>
+                                    </div>
+                                    <div class="stat-bar">
+                                        <span>Defensa</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 65%"></div>
+                                        </div>
+                                        <span>65</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+        
+        <footer class="pokedex-footer">
+            <p>Pokédex Mejorada - Diseño responsivo con 6 Pokémon | Hecho con <i class="fas fa-heart" style="color: #e74c3c;"></i> para fans de Pokémon</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
