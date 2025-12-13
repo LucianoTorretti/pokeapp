@@ -1,0 +1,162 @@
+/* ==================================== */
+/* 1. ESTILOS GLOBALES Y CONTENEDOR */
+/* ==================================== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Fondo gris claro */
+    margin: 0;
+    padding: 0;
+}
+
+.pokedex-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* ==================================== */
+/* 2. ESTILOS DE LA BARRA DE NAVEGACIÓN (Filtros) */
+/* ==================================== */
+
+.filters-nav {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff; /* Fondo blanco para la barra de filtros */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.type-buttons-grid {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones salten de línea */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white; /* Texto blanco en los botones */
+    transition: opacity 0.2s;
+    font-size: 12px;
+}
+
+.filter-btn:hover {
+    opacity: 0.8;
+}
+
+/* Botón VER TODOS */
+.all-btn {
+    background-color: #6c757d; 
+    margin-bottom: 10px;
+}
+
+
+/* ==================================== */
+/* 3. COLORES DE TIPOS DE POKÉMON (Clases para los botones y los badges) */
+/* ==================================== */
+
+/* Los colores están basados en la convención de la PokeAPI y juegos */
+.type-normal { background-color: #A8A77A; }
+.type-fire { background-color: #EE8130; }
+.type-water { background-color: #6390F0; }
+.type-grass { background-color: #7AC74C; }
+.type-electric { background-color: #F7D02C; }
+.type-ice { background-color: #96D9D6; }
+.type-fighting { background-color: #C22E28; }
+.type-poison { background-color: #A33EA1; }
+.type-ground { background-color: #E2BF65; }
+.type-flying { background-color: #A98FF3; }
+.type-psychic { background-color: #F95587; }
+.type-bug { background-color: #A6B91A; }
+.type-rock { background-color: #B6A136; }
+.type-ghost { background-color: #735797; }
+.type-dark { background-color: #705746; }
+.type-dragon { background-color: #6F35FC; }
+.type-steel { background-color: #B7B7CE; }
+.type-fairy { background-color: #D685AD; }
+
+
+/* ==================================== */
+/* 4. ESTILOS DEL GRID Y TARJETAS */
+/* ==================================== */
+
+.pokemon-grid {
+    display: grid;
+    /* Diseño responsivo: mínimo 300px, máximo 1fr por columna */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.pokemon-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    /* Animación simple */
+    transition: transform 0.2s;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-5px);
+}
+
+.pokemon-image {
+    width: 120px; 
+    height: auto;
+    margin-bottom: 10px;
+    z-index: 10;
+}
+
+.pokemon-info {
+    padding-top: 15px;
+    z-index: 5;
+}
+
+.pokemon-number {
+    font-size: 14px;
+    color: #999;
+    font-weight: bold;
+    margin: 0;
+}
+
+.pokemon-name {
+    font-size: 20px;
+    font-weight: 900;
+    color: #333;
+    margin: 5px 0 10px 0;
+}
+
+.type-badge {
+    color: white;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 2px;
+}
+
+.pokemon-details {
+    margin-top: 10px;
+    color: #777;
+    font-size: 14px;
+}
+
+.detail-item:not(:last-child)::after {
+    content: " | ";
+    margin: 0 5px;
+    color: #ccc;
+}
