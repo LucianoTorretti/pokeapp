@@ -17,8 +17,8 @@ function mostrarPokemon(poke) {
 
             <div class="pokemon-imagen">
             <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png"
-                alt="ditto"
+                src="${poke.sprites.other["showdown"].front_default}"
+                alt="${poke.name}"
             >
             </div>
 
