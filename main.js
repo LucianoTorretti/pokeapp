@@ -2,15 +2,34 @@ const listaPokemon = document.querySelector("#listaPokemon");
 let URL = "https://pokeapi.co/api/v2/pokemon/";
 const pokemonCount = document.querySelector("#count");
 const inputBusqueda = document.querySelector("#search-pokemon");
+const botonesFiltro = document.querySelectorAll(".filter-btn");
+const botonTodos = document.querySelector(".all-btn");
+let tiposSeleccionados = [];
+const pokemonData = [];
 
 
+// Generamos los espacios vacíos inmediatamente
 for (let i = 1; i <= 151; i++) {
-  fetch(URL + i)
-    .then((response) => response.json())
-    .then((data) => mostrarPokemon(data));
+    const contenedorVacio = document.createElement("div");
+    contenedorVacio.id = `pokemon-slot-${i}`; // Le damos un ID único por número
+    listaPokemon.append(contenedorVacio);
 }
 
-function mostrarPokemon(poke) {
+for (let i = 1; i <= 151; i++) {
+    fetch(URL + i)
+        .then((response) => response.json())
+        .then((data) => {
+            // Buscamos el lugar que le corresponde
+            const slot = document.querySelector(`#pokemon-slot-${i}`);
+            // Llamamos a tu función para generar el HTML y lo metemos en el slot
+            rellenarSlot(slot, data);
+            
+        });
+}
+
+
+
+function rellenarSlot(contenedor, poke) {
 
     let tipos = poke.types.map((typeInfo) => `<p class="type-${typeInfo.type.name}">${typeInfo.type.name}</p>`);
     tipos = tipos.join("");
@@ -24,9 +43,8 @@ function mostrarPokemon(poke) {
 
 
 
-  const div = document.createElement("div");
-  div.classList.add("pokemon");
-  div.innerHTML = `
+  contenedor.classList.add("pokemon");
+  contenedor.innerHTML = `
         <div class="pokemon-card-inner">
         <div class="pokemon-card-front">
             <p class="pokemon-id-back">#${pokeId}</p>
@@ -106,8 +124,10 @@ function mostrarPokemon(poke) {
             </div>
         </div>
         </div>
-    `;
-    listaPokemon.append(div);
+    
+    
+        `;
+
     actualizarContador();
 
 }
@@ -132,5 +152,67 @@ inputBusqueda.addEventListener("input", (e) => {
         }
     });
 
-    actualizarContador(); // Actualizamos el número para que coincida con los resultados visibles
+
+
+});
+
+function filtrarPokemon() {
+    const textoUsuario = document.querySelector("#search-pokemon").value.toLowerCase();
+    const todosLosPokemon = document.querySelectorAll(".pokemon");
+
+    todosLosPokemon.forEach(pokemon => {
+        const nombre = pokemon.querySelector(".pokemon-nombre").textContent.toLowerCase();
+        
+        // Obtenemos todos los tipos que tiene esta tarjeta de Pokémon
+        const tiposDelPokemon = Array.from(pokemon.querySelectorAll(".pokemon-tipos p"))
+                                     .map(p => p.textContent.toLowerCase());
+
+        // CONDICIÓN 1: ¿El nombre coincide con el buscador?
+        const coincideNombre = nombre.includes(textoUsuario);
+
+        // CONDICIÓN 2: ¿El Pokémon tiene AL MENOS UNO de los tipos seleccionados?
+        // Si no hay tipos seleccionados, mostramos todos (true)
+        const coincideTipo = tiposSeleccionados.length === 0 || 
+                             tiposSeleccionados.some(tipo => tiposDelPokemon.includes(tipo));
+
+        // Si cumple ambas condiciones, lo mostramos
+        if (coincideNombre && coincideTipo) {
+            pokemon.style.display = "block";
+        } else {
+            pokemon.style.display = "none";
+        }
+    });
+
+    actualizarContador();
+}
+
+botonesFiltro.forEach(boton => {
+    boton.addEventListener("click", () => {
+        const tipo = boton.getAttribute("data-type");
+
+        if (tipo === null) { // Caso del botón "VER TODOS"
+            tiposSeleccionados = [];
+            botonesFiltro.forEach(b => b.classList.remove("active"));
+            document.querySelector(".all-btn").classList.add("active");
+        } else {
+            // Quitamos el "active" del botón Ver Todos
+            document.querySelector(".all-btn").classList.remove("active");
+
+            // Si el tipo ya estaba, lo quitamos. Si no, lo agregamos.
+            if (tiposSeleccionados.includes(tipo)) {
+                tiposSeleccionados = tiposSeleccionados.filter(t => t !== tipo);
+                boton.classList.remove("active");
+            } else {
+                tiposSeleccionados.push(tipo);
+                boton.classList.add("active");
+            }
+
+            // Si deseleccionamos todo, volvemos a activar "Ver Todos"
+            if (tiposSeleccionados.length === 0) {
+                document.querySelector(".all-btn").classList.add("active");
+            }
+        }
+
+        filtrarPokemon(); // Ejecutamos el filtro
+    });
 });
